@@ -20,7 +20,6 @@ seaborn
 
 # Data processing & notifications
 requests
-smtplib  # if using custom email notifications
 schedule  # for cron-like job scheduling
 
 # Kafka
