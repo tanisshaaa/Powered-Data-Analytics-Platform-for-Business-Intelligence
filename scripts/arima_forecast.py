@@ -1,3 +1,88 @@
+# import pymysql
+# from sqlalchemy import create_engine
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# from statsmodels.tsa.arima.model import ARIMA
+# import warnings
+# warnings.filterwarnings("ignore")
+
+# # Step 1: Connect to the database
+# def connect_to_database():
+#     try:
+#         engine = create_engine("mysql+pymysql://root:tanitani@127.0.0.1:3306/BusinessAnalytics")
+#         connection = engine.raw_connection()
+#         print("✅ Database connection successful!")
+#         return engine
+#     except Exception as e:
+#         print(f"❌ Database connection failed: {e}")
+#         return None
+
+# # Step 2: Fetch daily total sales data
+# def fetch_daily_sales(engine):
+#     try:
+#         query = """
+#             SELECT 
+#                 transaction_date, 
+#                 SUM(total_price) AS daily_total_sales
+#             FROM 
+#                 sales_transactions
+#             GROUP BY 
+#                 transaction_date
+#             ORDER BY 
+#                 transaction_date;
+#         """
+#         df = pd.read_sql(query, engine)
+#         df['transaction_date'] = pd.to_datetime(df['transaction_date'])
+#         df.set_index('transaction_date', inplace=True)
+#         print("✅ Sales data fetched successfully!")
+#         return df
+#     except Exception as e:
+#         print(f"❌ Failed to fetch sales data: {e}")
+#         return None
+
+# # Step 3: Forecast using ARIMA
+# def arima_forecast(df, forecast_days=15):
+#     try:
+#         # Train ARIMA model
+#         model = ARIMA(df['daily_total_sales'], order=(1, 1, 1))
+#         model_fit = model.fit()
+
+#         # Forecast
+#         forecast = model_fit.forecast(steps=forecast_days)
+        
+#         print("✅ ARIMA model forecasting complete!")
+#         return forecast
+#     except Exception as e:
+#         print(f"❌ ARIMA forecasting failed: {e}")
+#         return None
+
+# # Step 4: Visualize results
+# def visualize_forecast(df, forecast):
+#     plt.figure(figsize=(12, 6))
+#     plt.plot(df.index, df['daily_total_sales'], label='Actual Sales')
+    
+#     # Forecast dates
+#     forecast_index = pd.date_range(start=df.index[-1] + pd.Timedelta(days=1), periods=len(forecast))
+#     plt.plot(forecast_index, forecast, label='Forecasted Sales', color='red', linestyle='--')
+
+#     plt.title("ARIMA Forecast - Daily Total Sales")
+#     plt.xlabel("Date")
+#     plt.ylabel("Total Sales")
+#     plt.legend()
+#     plt.grid(True)
+#     plt.tight_layout()
+#     plt.show()
+
+# # Main Execution
+# if __name__ == "__main__":
+#     engine = connect_to_database()
+#     if engine:
+#         df_sales = fetch_daily_sales(engine)
+#         if df_sales is not None:
+#             forecast_result = arima_forecast(df_sales)
+#             if forecast_result is not None:
+#                 visualize_forecast(df_sales, forecast_result)
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.arima.model import ARIMA
