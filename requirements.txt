@@ -1,0 +1,30 @@
+# Core data & ML
+pandas
+numpy
+scikit-learn
+statsmodels
+prophet
+scipy
+
+# Time series forecasting
+pmdarima  # (optional, for auto ARIMA)
+
+# Anomaly detection
+pyod  # (for Isolation Forest and other outlier methods)
+
+# Streamlit app
+streamlit
+matplotlib
+plotly
+seaborn
+
+# Data processing & notifications
+requests
+smtplib  # if using custom email notifications
+schedule  # for cron-like job scheduling
+
+# Kafka
+confluent_kafka  # Or kafka-python depending on your broker
+
+# For JSON handling
+python-dotenv  # for managing secrets like API keys
