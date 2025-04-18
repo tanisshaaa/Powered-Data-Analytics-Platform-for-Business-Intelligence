@@ -1,5 +1,9 @@
 # Powered Data Analytics Platform for Business Intelligence
 
+## 🚀 Streamlit Website
+You can explore the interactive dashboard and make predictions using the live Streamlit app:
+
+👉 Live App on Streamlit [(https://powered-data-analytics-platform-for-business-intelligence.streamlit.app/)]
 ## Overview
 
 This project aims to build a **Powered Data Analytics Platform for Business Intelligence**. It integrates real-time data streaming, anomaly detection, and time series forecasting to help businesses make smarter decisions. Key components of the system include:
