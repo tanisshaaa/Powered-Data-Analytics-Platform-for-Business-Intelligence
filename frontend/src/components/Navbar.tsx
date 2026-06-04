@@ -1,3 +1,4 @@
+import { API_BASE } from '../config';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ const Navbar: React.FC = () => {
 
     setLoading(true);
     try {
-      await fetch('http://localhost:5000/api/visitors', {
+      await fetch(`${API_BASE}/api/visitors`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email })

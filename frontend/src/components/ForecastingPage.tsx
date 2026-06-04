@@ -1,3 +1,4 @@
+import { API_BASE } from '../config';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -108,7 +109,7 @@ const ForecastingPage: React.FC = () => {
   const fetchForecast = async (useDemo: boolean) => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/forecast?demo=${useDemo ? 'true' : 'false'}`);
+      const response = await fetch(`${API_BASE}/api/forecast?demo=${useDemo ? 'true' : 'false'}`);
       if (!response.ok) throw new Error('Failed to fetch forecasting data');
       const json: ForecastResponse = await response.json();
       setData(json);
@@ -126,7 +127,7 @@ const ForecastingPage: React.FC = () => {
       
       // Load fallback simulated data locally
       try {
-        const fallbackRes = await fetch('http://localhost:5000/api/forecast?demo=true');
+        const fallbackRes = await fetch(`${API_BASE}/api/forecast?demo=true`);
         const fallbackJson = await fallbackRes.json();
         setData(fallbackJson);
         setIsDemoMode(true);
@@ -142,7 +143,7 @@ const ForecastingPage: React.FC = () => {
     // Check if main dashboard stats indicates offline mode
     const checkBackend = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/dashboard-stats');
+        const res = await fetch(`${API_BASE}/api/dashboard-stats`);
         if (!res.ok) throw new Error('Offline');
         await fetchForecast(false);
       } catch {
@@ -158,7 +159,7 @@ const ForecastingPage: React.FC = () => {
     try {
       // Simulate training delay for wowed UX micro-animations
       await new Promise(resolve => setTimeout(resolve, 1500));
-      const response = await fetch(`http://localhost:5000/api/forecast?demo=${isDemoMode ? 'true' : 'false'}`);
+      const response = await fetch(`${API_BASE}/api/forecast?demo=${isDemoMode ? 'true' : 'false'}`);
       if (!response.ok) throw new Error('Model retraining failed');
       const json: ForecastResponse = await response.json();
       setData(json);

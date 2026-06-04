@@ -1,3 +1,4 @@
+import { API_BASE } from '../config';
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -93,7 +94,7 @@ const ChatbotPage: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/chatbot', {
+      const response = await fetch(`${API_BASE}/api/chatbot`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -1,3 +1,4 @@
+import { API_BASE } from '../config';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -204,27 +205,27 @@ const DashboardPage: React.FC = () => {
       setLoading(true);
       try {
         // Try fetching main stats
-        const statsRes = await fetch('http://localhost:5000/api/dashboard-stats');
+        const statsRes = await fetch(`${API_BASE}/api/dashboard-stats`);
         if (!statsRes.ok) throw new Error('Failed to fetch dashboard stats');
         const statsJson = await statsRes.json();
 
         // Try fetching yearly orders
-        const yearlyRes = await fetch('http://localhost:5000/api/dashboard/yearly');
+        const yearlyRes = await fetch(`${API_BASE}/api/dashboard/yearly`);
         if (!yearlyRes.ok) throw new Error('Failed to fetch yearly orders');
         const yearlyJson = await yearlyRes.json();
 
         // Try fetching sorted regions
-        const regionRes = await fetch(`http://localhost:5000/api/dashboard/regions?sort=${regionSort}`);
+        const regionRes = await fetch(`${API_BASE}/api/dashboard/regions?sort=${regionSort}`);
         if (!regionRes.ok) throw new Error('Failed to fetch region data');
         const regionJson = await regionRes.json();
 
         // Try fetching top countries
-        const countriesRes = await fetch('http://localhost:5000/api/dashboard/countries');
+        const countriesRes = await fetch(`${API_BASE}/api/dashboard/countries`);
         if (!countriesRes.ok) throw new Error('Failed to fetch countries');
         const countriesJson = await countriesRes.json();
 
         // Try fetching top categories
-        const categoriesRes = await fetch('http://localhost:5000/api/dashboard/categories');
+        const categoriesRes = await fetch(`${API_BASE}/api/dashboard/categories`);
         if (!categoriesRes.ok) throw new Error('Failed to fetch categories');
         const categoriesJson = await categoriesRes.json();
 
@@ -302,7 +303,7 @@ const DashboardPage: React.FC = () => {
 
     if (isLive) {
       try {
-        const response = await fetch(`http://localhost:5000/api/dashboard/regions?sort=${nextSort}`);
+        const response = await fetch(`${API_BASE}/api/dashboard/regions?sort=${nextSort}`);
         if (response.ok) {
           const data = await response.json();
           setRegionData(data);
@@ -326,7 +327,7 @@ const DashboardPage: React.FC = () => {
 
     if (isLive) {
       try {
-        const res = await fetch(`http://localhost:5000/api/dashboard/countries/${encodeURIComponent(countryName)}/states`);
+        const res = await fetch(`${API_BASE}/api/dashboard/countries/${encodeURIComponent(countryName)}/states`);
         if (res.ok) {
           const data = await res.json();
           setGeoData(data);
@@ -350,7 +351,7 @@ const DashboardPage: React.FC = () => {
     setSelectedCountry(null);
     if (isLive) {
       try {
-        const res = await fetch('http://localhost:5000/api/dashboard/countries');
+        const res = await fetch(`${API_BASE}/api/dashboard/countries`);
         if (res.ok) {
           const data = await res.json();
           setGeoData(data);
@@ -374,7 +375,7 @@ const DashboardPage: React.FC = () => {
 
       if (isLive) {
         try {
-          const res = await fetch(`http://localhost:5000/api/dashboard/categories/${encodeURIComponent(categoryName)}/subcategories`);
+          const res = await fetch(`${API_BASE}/api/dashboard/categories/${encodeURIComponent(categoryName)}/subcategories`);
           if (res.ok) {
             const data = await res.json();
             setProductData(data);
@@ -396,7 +397,7 @@ const DashboardPage: React.FC = () => {
 
       if (isLive) {
         try {
-          const res = await fetch(`http://localhost:5000/api/dashboard/subcategories/${encodeURIComponent(subcategoryName)}/products`);
+          const res = await fetch(`${API_BASE}/api/dashboard/subcategories/${encodeURIComponent(subcategoryName)}/products`);
           if (res.ok) {
             const data = await res.json();
             setProductData(data);
@@ -420,7 +421,7 @@ const DashboardPage: React.FC = () => {
     setSelectedSubcategory(null);
     if (isLive) {
       try {
-        const res = await fetch('http://localhost:5000/api/dashboard/categories');
+        const res = await fetch(`${API_BASE}/api/dashboard/categories`);
         if (res.ok) {
           const data = await res.json();
           setProductData(data);
@@ -439,7 +440,7 @@ const DashboardPage: React.FC = () => {
     setSelectedSubcategory(null);
     if (isLive) {
       try {
-        const res = await fetch(`http://localhost:5000/api/dashboard/categories/${encodeURIComponent(selectedCategory)}/subcategories`);
+        const res = await fetch(`${API_BASE}/api/dashboard/categories/${encodeURIComponent(selectedCategory)}/subcategories`);
         if (res.ok) {
           const data = await res.json();
           setProductData(data);
