@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-black: #060608;
+  --bg-deep: #0c0c0f;
+  --bg-card: #121216;
+  --primary: #ffcc00; /* Basic Solid Yellow */
+  --primary-glow: rgba(255, 204, 0, 0.15);
+  --secondary: #ffcc00; /* No gradients: matches primary basic yellow */
+  --secondary-glow: rgba(255, 204, 0, 0.1);
+  --accent: #ffcc00; /* Basic yellow accent */
+  --text-main: #f5f5f7;
+  --text-muted: #9fa0a6;
+  --glass-border: rgba(255, 204, 0, 0.2);
+  --glass-bg: #111115;
+  --success: #ffcc00; /* Simple basic yellow for success */
+  --error: #ff3333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-black);
+  background-image: 
+    linear-gradient(rgba(255, 204, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 204, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 204, 0, 0.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    border-color: rgba(255, 204, 0, 0.2);
+  }
+  50% {
+    border-color: rgba(255, 204, 0, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

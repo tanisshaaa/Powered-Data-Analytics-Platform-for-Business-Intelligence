@@ -1,0 +1,18 @@
+That's a great question! It’s important to understand that in Data Science, the word **anomaly** doesn't necessarily mean "bad" or "error"—it just means **"highly unusual based on historical patterns."**
+
+Here is a breakdown of exactly how and why a very high sales day gets flagged as an anomaly by our system:
+
+### 1. How the Machine Learning Model (Isolation Forest) Works
+Our backend uses an algorithm called **Isolation Forest**. 
+* It looks at your historical daily sales and builds a statistical understanding of your "normal" range (e.g., let's say your normal sales fluctuate between $8,000 and $12,000 a day).
+* Because most days fall into that dense $8k–$12k cluster, they are considered "normal."
+* If a day suddenly drops to $1,000 or spikes to $30,000, it sits very far outside that cluster. The model finds it very easy to mathematically "isolate" that point from the rest of the pack, which triggers the anomaly flag (the red dot).
+
+### 2. Why Flagging a Massive Sales Spike is Useful
+You might think, *"High sales are good! Why flag them?"* While high sales are fantastic, they are operationally disruptive if you don't know *why* they happened. Flagging a massive spike alerts the business to investigate immediately:
+* **Marketing Success:** Did a recent social media campaign suddenly go viral? If so, marketing needs to know immediately so they can double down on it.
+* **B2B Bulk Orders:** Did a single corporate client just buy out your entire stock? You might need to rush-order more inventory from your suppliers immediately so you don't run out for regular customers tomorrow.
+* **System Glitches:** Was there a pricing glitch on the website that caused items to sell for $0.01 instead of $100? If so, this is a crisis that needs to be fixed within minutes.
+
+### Summary
+The system isn't saying the high sales day is a *mistake*; it is telling you, **"Hey, this day's volume is radically different from your normal business rhythm. You need to look at this right now so you can react appropriately."**

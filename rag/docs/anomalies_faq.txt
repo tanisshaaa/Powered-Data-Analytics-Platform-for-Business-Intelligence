@@ -1,0 +1,20 @@
+# RetailGPT System FAQ: Sales Volatility and Anomaly Detection
+
+## 1. What defines a Sales Anomaly in our system?
+In our business intelligence platform, an anomaly is not a database error or bad transaction. It represents a daily sales volume that is statistically **highly unusual and outside the bounds of historical trends**.
+* Our machine learning model establishes a **normal operational sales range** (usually between $8,000 and $12,000 per day for standard business seasons).
+* Any transaction day where aggregated sales fall significantly below this baseline (e.g. drops under $1,500) or spike dramatically above it (e.g. spikes over $22,000) is flagged as an outlier (anomaly).
+
+## 2. How the Isolation Forest Algorithm works
+We use a machine learning algorithm called **Isolation Forest** from Scikit-Learn to identify these anomalous days:
+* **The Concept:** Instead of modeling normal data points and finding points that deviate, the Isolation Forest isolates outliers directly by randomly partitioning (splitting) the dataset.
+* **Normal Clusters:** Because standard transaction days are closely clustered together in density, it requires many random splits to isolate them.
+* **Outliers:** Because anomalies (like a $30,000 spike) sit far away from the rest of the data, it takes very few random splits to isolate them.
+* **Contamination Rate:** Our model is configured with a **5% contamination rate** (`contamination=0.05`), which means the algorithm is tuned to flag the top 5% most extreme outliers in our historical timeline.
+
+## 3. Business Reasons for Sales Anomalies
+When the system raises a **Critical Anomaly Alert (Red Radar Marker)** on the dashboard, it is usually triggered by one of the following business scenarios:
+* **Successful Marketing Campaigns:** A promotional discount code going viral can cause sales to spike 3x to 4x normal volume.
+* **B2B Bulk Orders:** A single corporate client placing a massive bulk procurement order.
+* **System Price Glitches:** An e-commerce pricing error where high-value items are sold for incorrect, extremely low prices, causing a massive, artificial volume spike.
+* **Operational Outages:** Server downtime or payment gateway failures causing daily revenue to drop near zero.

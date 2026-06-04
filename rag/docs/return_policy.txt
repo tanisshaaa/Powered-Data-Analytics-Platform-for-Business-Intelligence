@@ -1,0 +1,18 @@
+# RetailGPT Corporate Refund & Return Policy
+
+## 1. Product Return Windows by Category
+To accommodate different product lifecycles, our return windows are structured by major product category:
+* **Technology Products:** Includes Phones, Copiers, Accessories, and Machines. Because of rapid depreciation, all Technology products must be returned within a strict **14-day return window** from the date of delivery.
+* **Office Supplies:** Includes Binders, Paper, Storage, Art, Fasteners, and Labels. Customers enjoy a standard **30-day return window** for all Office Supplies.
+* **Furniture Products:** Includes Chairs, Tables, Bookcases, and Furnishings. Customers can return Furniture items within a **30-day return window** from the date of delivery.
+
+## 2. Restocking Fees and Condition Requirements
+* **Condition:** Items must be returned in their original packaging, unused, and in resaleable condition.
+* **Technology Restocking:** No restocking fee is applied to Technology products if they are returned unopened.
+* **Furniture Restocking Fee:** All returned Furniture items (Chairs, Tables, Bookcases) are subject to a **15% restocking fee** which is deducted from the final refund amount. This fee covers the cost of heavy logistics, unpacking inspection, and repackaging.
+* **Return Shipping Cost:** The customer is responsible for return shipping shipping costs unless the return is due to a product defect or shipping error on our part.
+
+## 3. Refund Disbursal and Channels
+* Once a return is received and inspected at our central fulfillment warehouse, refunds are processed within 3 to 5 business days.
+* Refunds are disbursed back to the original payment method utilized during check-out (credit card, PayPal, or corporate account credits).
+* Promotional items or items purchased during clearance/liquidation sales are marked as "Final Sale" and are not eligible for returns or refunds.

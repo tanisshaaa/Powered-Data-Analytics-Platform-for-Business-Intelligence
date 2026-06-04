@@ -1,90 +1,73 @@
-# Powered Data Analytics Platform for Business Intelligence
+# React + TypeScript + Vite
 
-## 🚀 Streamlit Website
-You can explore the interactive dashboard and make predictions using the live Streamlit app:
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-👉 Live App on Streamlit [(https://powered-data-analytics-platform-for-business-intelligence.streamlit.app/)]
-## Overview
+Currently, two official plugins are available:
 
-This project aims to build a **Powered Data Analytics Platform for Business Intelligence**. It integrates real-time data streaming, anomaly detection, and time series forecasting to help businesses make smarter decisions. Key components of the system include:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- **Real-time Data Streaming** using Apache Kafka
-- **Anomaly Detection** using **Isolation Forest**
-- **Time Series Forecasting** using **ARIMA**
-- **Data Visualization** using **Power BI**
-- **Automated Email Notifications** based on anomaly severity levels
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## CSV Files
+## Expanding the ESLint configuration
 
-The platform uses multiple CSV files to simulate and work with data. Below are the details of each CSV file and the columns it contains:
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### 1. **Sales Data (`sales_data.csv`)**
-   - **Headers**:
-     - `transaction_id`: Unique identifier for each transaction.
-     - `product_id`: The product sold in the transaction.
-     - `quantity_sold`: The number of units sold in each transaction.
-     - `unit_price`: Price per unit of the product.
-     - `sale_date`: The timestamp of the sale.
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-   **Contents**: This file tracks the sales transactions of various products over time. It is used for anomaly detection (e.g., detecting unusual sales patterns) and forecasting product sales.
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-### 2. **Product Data (`products.csv`)**
-   - **Headers**:
-     - `product_id`: Unique identifier for each product.
-     - `product_name`: Name of the product.
-     - `category`: Product category.
-     - `price`: Price of the product.
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-   **Contents**: This file provides details about the products being sold. It is used for analyzing pricing patterns, categorizing products, and associating with sales data.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
----
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## ARIMA Time Series Forecasting
-
-**ARIMA (AutoRegressive Integrated Moving Average)** is used to forecast future values based on historical data. In this project, ARIMA is applied to the **sales data** to predict future sales trends.
-
-**How it works**:
-- **Input**: The historical sales data (quantity sold) is used to train the ARIMA model.
-- **Output**: The model generates forecasts for future sales, which are visualized using **Power BI** for better insights.
-- **Purpose**: Helps businesses anticipate future demand and make informed decisions.
-
----
-
-## Isolation Forest Anomaly Detection
-
-**Isolation Forest** is an algorithm used for detecting anomalies (outliers) in the dataset.
-
-**How it works**:
-- **Input**: The sales data (quantity sold, unit price) is used to detect anomalies.
-- **Output**: Points identified as anomalies are flagged for further inspection.
-- **Purpose**: Helps identify unusual patterns in sales that may indicate issues such as fraud, data errors, or outlier behavior.
-
----
-
-## Email Notification System
-
-The platform includes an **email notification system** to alert users based on the severity of detected anomalies.
-
-**How it works**:
-- **Severity Levels**: Notifications are sent based on anomaly severity:
-  - `Low`: Low-priority alerts (e.g., minor deviations).
-  - `Medium`: Medium-priority alerts (e.g., noticeable anomalies).
-  - `High`: Urgent alerts (e.g., critical issues or outliers).
-  
-- **Functionality**:
-  - The system uses **SMTP** (Gmail in this case) to send emails.
-  - When an anomaly is detected, the severity level is determined and an appropriate notification is sent to the user.
-
-**Example**:
-- An anomaly in sales that is classified as "High" will trigger an urgent email notification to the business owner, alerting them to investigate immediately.
-
----
-
-## How to Run
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/business-intelligence-platform.git
-   cd business-intelligence-platform
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

@@ -1,0 +1,22 @@
+# RetailGPT Corporate Shipping Policy
+
+## 1. Shipping Modes and Speed Guidelines
+Our store offers four primary delivery options for customers. Shipping transit times are computed from the date the package is handed over to our shipping carriers:
+* **Standard Class:** This is our default shipping method. Standard Class shipments are delivered in 4 to 6 business days.
+* **Second Class:** An expedited ground shipping option. Second Class shipments are delivered in 2 to 3 business days.
+* **First Class:** Our premium air delivery option. First Class shipments are delivered in exactly 1 business day (Next Day Delivery).
+* **Same Day:** Our fastest express option. Same Day shipments are dispatched immediately and delivered on the same business day, provided the order is placed before 12:00 PM local time.
+
+## 2. Shipping Carrier Partners
+To ensure reliable global logistics, RetailGPT partners with the following standard shipping carriers:
+* **Federal Express (FedEx):** Utilized primarily for Second Class and First Class shipments within North America.
+* **United Parcel Service (UPS):** Utilized for Standard Class ground transport.
+* **USPS (United States Postal Service):** Utilized for domestic Standard Class PO Box delivery.
+* **DHL Express:** Dedicated carrier partner for all international markets and overseas shipments.
+
+## 3. Shipping Rates and Cost Calculations
+* Standard Class: Free for orders over $50, otherwise a flat fee of $4.95 is charged.
+* Second Class: Computed as 5% of the total order value, with a minimum charge of $9.95.
+* First Class: Computed as 12% of the total order value, with a minimum charge of $19.95.
+* Same Day Delivery: Fixed flat rate of $29.99 for all orders, regardless of size or weight.
+* Surcharges: An additional $15.00 heavy-item surcharge applies to Furniture items (specifically Tables, Chairs, and Bookcases) due to weight limits.
