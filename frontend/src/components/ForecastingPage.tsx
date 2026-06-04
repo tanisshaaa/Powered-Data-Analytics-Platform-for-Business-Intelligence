@@ -39,8 +39,11 @@ const formatDate = (dateStr: string) => {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', weekday: 'short' });
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type LooseRecord = any;
+
 // Custom tooltips
-const CustomForecastTooltip = ({ active, payload }: any) => {
+const CustomForecastTooltip = ({ active, payload }: { active?: boolean, payload?: LooseRecord[] }) => {
   if (active && payload && payload.length) {
     const item = payload[0].payload;
     const isForecast = item.isForecast;
@@ -67,7 +70,7 @@ const CustomForecastTooltip = ({ active, payload }: any) => {
   return null;
 };
 
-const CustomFeatureTooltip = ({ active, payload }: any) => {
+const CustomFeatureTooltip = ({ active, payload }: { active?: boolean, payload?: LooseRecord[] }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
@@ -111,7 +114,7 @@ const ForecastingPage: React.FC = () => {
       setData(json);
       setIsDemoMode(!!json.is_mock);
       setLastUpdated(new Date().toLocaleTimeString());
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       // Fallback alert
       setAlert({
@@ -166,10 +169,10 @@ const ForecastingPage: React.FC = () => {
         type: 'success'
       });
       setTimeout(() => setAlert({ show: false, message: '', type: '' }), 4000);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setAlert({
         show: true,
-        message: 'Retraining failed: ' + err.message,
+        message: 'Retraining failed: ' + (err instanceof Error ? err.message : String(err)),
         type: 'error'
       });
       setTimeout(() => setAlert({ show: false, message: '', type: '' }), 4000);
@@ -191,7 +194,7 @@ const ForecastingPage: React.FC = () => {
   const featureImportance = data?.feature_importance || {};
 
   // Compute merged data for continuous chart line
-  const chartData: any[] = [];
+  const chartData: Record<string, unknown>[] = [];
   historical.forEach((h, index) => {
     const isLast = index === historical.length - 1 && forecast.length > 0;
     chartData.push({

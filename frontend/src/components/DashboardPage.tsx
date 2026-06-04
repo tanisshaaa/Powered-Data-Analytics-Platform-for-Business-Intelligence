@@ -129,8 +129,11 @@ const formatNumber = (value: number) => {
   return new Intl.NumberFormat('en-US').format(value);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type LooseRecord = any;
+
 // Custom tooltips for nice design
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }: { active?: boolean, payload?: LooseRecord[], label?: string }) => {
   if (active && payload && payload.length) {
     return (
       <div style={{
@@ -141,7 +144,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
         boxShadow: '0 4px 20px rgba(0,0,0,0.8)'
       }}>
         <p style={{ margin: 0, fontWeight: 'bold', color: 'var(--primary)', fontSize: '0.95rem' }}>{label}</p>
-        {payload.map((pld: any, index: number) => {
+        {payload.map((pld: LooseRecord, index: number) => {
           const isValCurrency = pld.name === 'sales' || pld.dataKey === 'sales';
           const valueStr = isValCurrency ? formatCurrency(pld.value) : formatNumber(pld.value);
           const title = pld.name === 'sales' ? 'Sales' : pld.name === 'orders' ? 'Total Orders' : pld.name;
@@ -171,10 +174,10 @@ const DashboardPage: React.FC = () => {
   });
 
   // Yearly data
-  const [yearlyData, setYearlyData] = useState<any[]>([]);
+  const [yearlyData, setYearlyData] = useState<Record<string, unknown>[]>([]);
 
   // Region data & filter
-  const [regionData, setRegionData] = useState<any[]>([]);
+  const [regionData, setRegionData] = useState<Record<string, unknown>[]>([]);
   const [regionSort, setRegionSort] = useState<'desc' | 'asc'>('desc');
 
   // Market sort state
@@ -184,11 +187,11 @@ const DashboardPage: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Geographic drill-down state
-  const [geoData, setGeoData] = useState<any[]>([]);
+  const [geoData, setGeoData] = useState<Record<string, unknown>[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
 
   // Product hierarchy drill-down state
-  const [productData, setProductData] = useState<any[]>([]);
+  const [productData, setProductData] = useState<Record<string, unknown>[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
 
@@ -316,7 +319,7 @@ const DashboardPage: React.FC = () => {
   };
 
   // Handle Country Drill-down click
-  const handleCountryClick = async (item: any) => {
+  const handleCountryClick = async (item: LooseRecord) => {
     if (!item || selectedCountry) return; // Only drill down from top level
     const countryName = item.name;
     setSelectedCountry(countryName);
@@ -361,7 +364,7 @@ const DashboardPage: React.FC = () => {
   };
 
   // Handle Product Category Drill-down click
-  const handleProductClick = async (item: any) => {
+  const handleProductClick = async (item: LooseRecord) => {
     if (!item) return;
 
     if (!selectedCategory) {
@@ -822,7 +825,7 @@ const DashboardPage: React.FC = () => {
                     fill="var(--primary)" 
                     radius={[4, 4, 0, 0]}
                     style={{ cursor: selectedCountry ? 'default' : 'pointer' }}
-                    onClick={(data: any) => {
+                    onClick={(data: LooseRecord) => {
                       if (data) handleCountryClick(data);
                     }}
                   >
@@ -949,7 +952,7 @@ const DashboardPage: React.FC = () => {
                     fill="var(--primary)" 
                     radius={[4, 4, 0, 0]}
                     style={{ cursor: selectedSubcategory ? 'default' : 'pointer' }}
-                    onClick={(data: any) => {
+                    onClick={(data: LooseRecord) => {
                       if (data) handleProductClick(data);
                     }}
                   >

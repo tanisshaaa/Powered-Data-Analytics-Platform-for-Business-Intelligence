@@ -22,7 +22,7 @@ interface ChatMessage {
   text: string;
   loading?: boolean;
   sql?: string;
-  data?: any[];
+  data?: Record<string, unknown>[];
   columns?: string[];
   chartType?: 'line' | 'bar' | 'pie' | 'table';
   sources?: { source: string; text: string; score?: number }[];
@@ -126,7 +126,7 @@ const ChatbotPage: React.FC = () => {
           return msg;
         })
       );
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setMessages(prev =>
         prev.map(msg => {
@@ -136,7 +136,7 @@ const ChatbotPage: React.FC = () => {
               sender: 'bot',
               text: 'Sorry, I encountered an error while processing your request. Please ensure the backend server is running and your OpenAI API key is valid.',
               loading: false,
-              error: err.message
+              error: err instanceof Error ? err.message : String(err)
             };
           }
           return msg;
@@ -154,7 +154,7 @@ const ChatbotPage: React.FC = () => {
   };
 
   // Helper to render dynamic recharts dynamically
-  const renderDynamicChart = (chartType: string, chartData: any[], columns: string[]) => {
+  const renderDynamicChart = (chartType: string, chartData: Record<string, unknown>[], columns: string[]) => {
     if (!chartData || chartData.length === 0 || !columns || columns.length < 2) return null;
 
     const numericCols = columns.filter(col => {
@@ -175,7 +175,7 @@ const ChatbotPage: React.FC = () => {
     const yAxisKey = numericCols[0] || columns[1] || columns[0];
 
     // Helper to format values
-    const formatYVal = (v: any) => {
+    const formatYVal = (v: unknown) => {
       if (typeof v === 'number') {
         if (yAxisKey.toLowerCase().includes('sales') || yAxisKey.toLowerCase().includes('profit') || yAxisKey.toLowerCase().includes('cost')) {
           return formatCurrency(v);

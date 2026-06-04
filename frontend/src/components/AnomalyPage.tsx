@@ -55,7 +55,7 @@ const formatDate = (dateStr: string) => {
 };
 
 // Custom Tooltip for the Recharts AreaChart
-const CustomAnomalyTooltip = ({ active, payload }: any) => {
+const CustomAnomalyTooltip = ({ active, payload }: { active?: boolean, payload?: { payload: AnomalyPoint }[] }) => {
   if (active && payload && payload.length) {
     const item = payload[0].payload;
     const isAnomaly = item.anomaly === -1;
@@ -83,7 +83,7 @@ const CustomAnomalyTooltip = ({ active, payload }: any) => {
 };
 
 // Custom Dot Component to highlight Isolation Forest anomalies
-const CustomDot = (props: any) => {
+const CustomDot = (props: { cx?: number, cy?: number, payload?: AnomalyPoint }) => {
   const { cx, cy, payload } = props;
   if (payload && payload.anomaly === -1) {
     return (
@@ -121,7 +121,7 @@ const AnomalyPage: React.FC = () => {
       setData(json);
       setIsDemoMode(!!json.is_mock);
       setLastUpdated(new Date().toLocaleTimeString());
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setAlert({
         show: true,
@@ -183,7 +183,7 @@ const AnomalyPage: React.FC = () => {
       });
       setTimeout(() => setAlert({ show: false, message: '', type: '' }), 6000);
       
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setAlert({
         show: true,
@@ -215,7 +215,7 @@ const AnomalyPage: React.FC = () => {
       });
       setTimeout(() => setAlert({ show: false, message: '', type: '' }), 5000);
       
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setAlert({
         show: true,
@@ -607,7 +607,7 @@ const AnomalyPage: React.FC = () => {
                 {[30, 60, 90, 120].map((t) => (
                   <button
                     key={t}
-                    onClick={() => setTimeRange(t as any)}
+                    onClick={() => setTimeRange(t as 30 | 60 | 90 | 120)}
                     style={{
                       background: timeRange === t ? 'rgba(255, 204, 0, 0.15)' : 'rgba(255, 255, 255, 0.05)',
                       border: timeRange === t ? '1px solid var(--primary)' : '1px solid rgba(255, 255, 255, 0.1)',
