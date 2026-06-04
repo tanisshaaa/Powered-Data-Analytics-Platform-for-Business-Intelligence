@@ -44,6 +44,20 @@ const InteractivePlayground: React.FC = () => {
   const [typingIndex, setTypingIndex] = useState(0);
   const [typingText, setTypingText] = useState('');
   
+  const [anomalyResolved, setAnomalyResolved] = useState(false);
+  const [inventoryRestocked, setInventoryRestocked] = useState(false);
+  const [fraudBlocked, setFraudBlocked] = useState(false);
+  const [chatbotOptimized, setChatbotOptimized] = useState(false);
+  const [chatbotMobileSpeed, setChatbotMobileSpeed] = useState(5.2);
+  const [reportsDownloaded, setReportsDownloaded] = useState(false);
+  const [reportsDownloading, setReportsDownloading] = useState(false);
+  const [adSpendBoost, setAdSpendBoost] = useState(0);
+  const [anomalyThreshold, setAnomalyThreshold] = useState(-2);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [hoveredDataPoint, setHoveredDataPoint] = useState<any>(null);
+  const [safetyStockLevel, setSafetyStockLevel] = useState(100);
+  const [reportsWeek, setReportsWeek] = useState('May 24 - May 30');
+
   const terminalBodyRef = useRef<HTMLDivElement>(null);
 
   const handleTabClick = (tab: Scenario) => {

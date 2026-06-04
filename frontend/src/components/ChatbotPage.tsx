@@ -175,14 +175,14 @@ const ChatbotPage: React.FC = () => {
     const yAxisKey = numericCols[0] || columns[1] || columns[0];
 
     // Helper to format values
-    const formatYVal = (v: unknown) => {
+    const formatYVal = (v: unknown): string => {
       if (typeof v === 'number') {
         if (yAxisKey.toLowerCase().includes('sales') || yAxisKey.toLowerCase().includes('profit') || yAxisKey.toLowerCase().includes('cost')) {
           return formatCurrency(v);
         }
         return v.toString();
       }
-      return v;
+      return String(v);
     };
 
     if (chartType === 'line') {

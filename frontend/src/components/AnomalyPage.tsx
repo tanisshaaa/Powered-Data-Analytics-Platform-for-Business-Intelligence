@@ -865,12 +865,12 @@ const AnomalyPage: React.FC = () => {
                           key={anomaly.order_date + idx} 
                           style={{ 
                             borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
-                            backgroundColor: idx === 0 && data.summary.latest_anomaly ? 'rgba(239, 68, 68, 0.05)' : 'transparent'
+                            backgroundColor: idx === 0 && data?.summary?.latest_anomaly ? 'rgba(239, 68, 68, 0.05)' : 'transparent'
                           }}
                         >
                           <td style={{ padding: '12px 8px', fontWeight: '500' }}>
                             {formatDate(anomaly.order_date)}
-                            {idx === 0 && data.summary.latest_anomaly && (
+                            {idx === 0 && data?.summary?.latest_anomaly && (
                               <span style={{
                                 marginLeft: '8px',
                                 padding: '2px 6px',
