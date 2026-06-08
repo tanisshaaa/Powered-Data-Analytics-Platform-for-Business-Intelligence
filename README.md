@@ -1,14 +1,50 @@
 # RetailGPT - Powered Data Analytics Platform for Business Intelligence
 
-RetailGPT is an AI-powered Business Intelligence (BI) platform that enables users to interact with their retail sales data using natural language. It combines **Text-to-SQL**, **Retrieval-Augmented Generation (RAG)**, and **Machine Learning** to act as a virtual Senior Business Analyst.
+Your D2C store generates data. **RetailGPT tells you how to scale it.**
+An autonomous AI Business Analyst that continuously audits Shopify & Stripe logs, explains anomalies in real-time, predicts stock-outs, and executes revenue-saving overrides automatically.
+
+RetailGPT acts as an AI-powered Business Intelligence (BI) platform that enables users to interact with their retail sales data using natural language. It combines **Text-to-SQL**, **Retrieval-Augmented Generation (RAG)**, and **Machine Learning** to act as a virtual Senior Business Analyst.
+
+---
+
+### 🚨 The Dilemma & The Solution: The transition from Raw Logs to Revenue Certainty
+
+**01 The Raw Data Firehose**
+Every day, storefronts generate thousands of transactional rows across Shopify checkout systems and Stripe gateway APIs. An unreadable mass of server logs.
+
+**02 The Blindspot Gap**
+Standard dashboards show static, historical figures. They tell you sales fell, but stay completely silent on the root cause, leaving you with guesses and leakages.
+
+**03 The Intelligence Bridge**
+RetailGPT acts as your continuous digital audit layer. It connects directly to live logs and processes complex shifts into human-readable action triggers immediately.
+
+> “We bypassed flat dashboards. RetailGPT is a fully localized AI analyst that answers business questions and resolves logistical stockouts inside the database in real-time.”
+
+### 📊 LIVE STORE EVENT STUDY: Normal vs Anomaly Trigger
+A merchant sells 100 items daily. Suddenly, channel sales plummet to 40.
+- **Standard Day**: 100 sales
+- **Anomaly Day**: 40 sales (-60% Drop Spotted!)
+
+The visual drop is immediately highlighted. But as a shop owner, you are flooded with critical diagnostic questions:
+- **Why did sales drop?** 📉 Is it a checkout gateway latency, an ad campaign flag, or catalog glitches?
+- **Which product caused it?** 📦 Is the inventory dry for a single core SKU, or is a collection slow?
+- **Is this temporary or serious?** 🧐 Should we wait for organic recovery, or trigger high-alert routing?
+- **What will next week look like?** 🔮 Project our weekly cash balances and safety margins based on drift.
+- **Do I need to reorder inventory?** 🛒 Has consumption velocity triggered safety-limit points?
+- **Is there fraud or a system issue?** 🚨 Are Checkout codes duplicating discount rules or webhook logs?
+
+RetailGPT answers these questions automatically, providing real-time resolutions to logistical and operational anomalies.
+
+---
 
 ## 🌟 Key Features
 
+- **Continuous Anomaly Detection**: Monitors incoming sales data to detect outliers in revenue, profit, or quantity.
+- **Predictive Demand Forecasting & Auto-Pilot Stock Reordering**: Leverages **XGBoost** machine learning models to track overall sales performance, predict future trends with precision, and forecast demand to avoid stock-outs.
+- **Payment Gateway Exploits Guard**: Actively monitors and guards against unexpected patterns in payment logs.
 - **Natural Language Chatbot**: Ask questions in plain English (e.g., *"What category generated the most sales?"*). The system translates this into SQL, executes it against the database, and visualizes the results.
 - **Retrieval-Augmented Generation (RAG)**: The chatbot retrieves context from corporate policy documents (shipping rules, return policies) to enrich its answers using semantic search (ChromaDB).
 - **Automated Visualizations**: Automatically generates the most appropriate charts (Line, Bar, Pie, or Table) using `Recharts` based on the query results.
-- **Anomaly Detection**: Monitors incoming sales data to detect outliers in revenue, profit, or quantity.
-- **Forecasting & Dashboarding**: Visualizes key metrics, tracks overall sales performance, and predicts future trends.
 - **Robust Fallbacks**: Automatically falls back to local SQLite, local datasets, and word-matching if external cloud services (Supabase, OpenAI, ChromaDB) are unavailable.
 
 ## 🏗️ Architecture & Tech Stack
