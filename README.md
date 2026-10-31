@@ -76,7 +76,7 @@ RetailGPT answers these questions automatically, providing real-time resolutions
 6. **Data Execution**: The query runs against an in-memory SQLite database loaded with the Superstore dataset.
 7. **Analyst Summary**: OpenAI is prompted again with the query results and RAG context to generate a concise, 3-line business insight.
 8. **Visualization**: The Python script analyzes the shape of the data and recommends a chart type (`line`, `bar`, `pie`, or `table`).
-9. **Frontend Rendering**: The backend returns all the data, which the frontend renders natively as interactive charts, along with the AI's explanation and the retrieved policy snippets.
+9. **Frontend Rendering**: The backend returns all the data, which the frontend renders natively as interactive charts, along with the AI's explanation and the retrieved policy snippetss.
 
 ## 🚀 Getting Started
 
